@@ -1,0 +1,52 @@
+.margin20{
+  margin-top: 20px;
+}
+
+.caixa-receitas{
+  display: inline-block;
+  padding: 10px;
+  width: 30%;
+  height: 80px;
+  background-color: #cfcfcf;
+}
+
+thead{
+  background-color: #cfcfcf;
+}
+
+.caixa-principal{
+  text-align: center;
+}
+
+.despesa{
+  background-color: red;
+  color: white;
+}
+
+.dvbusca{
+  text-align: left;
+}
+
+.dvbusca .dvform input{
+  width: 80%;
+  display: inline-block;
+}
+
+.dvbusca form{
+  width: 80%;
+}
+
+.dvbusca .btn{
+  display: inline-block;
+}
+
+.dvbusca .dvform{
+  width: 79%;
+  display: inline-block;
+}
+
+.dvbusca .dvAdicionar{
+  display: inline-block;
+  width: 20%;
+  text-align: right;
+}
