@@ -1,4 +1,4 @@
-package com.caixa.Planilha;
+package com.caixa.planilha;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
