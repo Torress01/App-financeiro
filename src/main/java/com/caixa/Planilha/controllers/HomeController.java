@@ -55,6 +55,6 @@ public class HomeController {
       } else {
         System.out.println("Registro com ID" + id + "não encontrado");
       }
-      return "redirect:/";
+      return "redirect:/"; 
     }
 }
