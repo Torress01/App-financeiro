@@ -16,15 +16,15 @@
       <div class="caixa-principal">
         <div class="caixa-receitas">
           Valor Total<br>
-          R$ <span th:text="${valorTotal}"></span>
+          R$ [[${valorTotal}]]
         </div>
         <div class="caixa-receitas">
           Receitas<br>
-          R$ <span th:text="${totalReceitas}"></span>
+          R$ [[${totalReceitas}]]
         </div>
         <div class="caixa-receitas despesa">
           Despesas<br>
-          R$ <span th:text="${totalDespesas}"></span>
+          R$ [[${totalDespesas}]]
         </div>
       </div>
 
@@ -44,16 +44,16 @@
         <table class="table table-bordered">
               <thead>
                   <tr>
-                  <th scope="col">TIPO</th>
+                  <th scope="col">ITEM</th>
                   <th scope="col">VALOR</th>
-                  <th scope="col">STATUS</th>
+                  <th scope="col">TIPO</th>
                   <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
               <tr th:each="caixa : ${caixas}">
                 <td th:text="${caixa.tipo}">Item 1</td>
-                <td th:text="${'R$ ' + caixa.valor}">R$ 100,00</td>
+                <td th:text="${'R$ ' + caixa.getValorFormatado}">R$ 100,00</td>
                 <td th:text="${caixa.status}">Ativo</td>
                 <td><a th:href="@{/excluir/{id}(id=${caixa.id})}" class="btn btn-danger" onclick="return confirmExclusao()">Excluir</a></td>
               </tr>

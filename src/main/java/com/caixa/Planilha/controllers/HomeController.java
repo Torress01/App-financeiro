@@ -5,11 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.caixa.planilha.DAO.CaixaDAO;
 import com.caixa.planilha.Enum.Status;
 import com.caixa.planilha.models.Caixa;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Controller
@@ -40,12 +43,22 @@ public class HomeController {
 
       float valorTotal = totalReceitas - totalDespesas;
 
+      DecimalFormat df = new DecimalFormat("#,##0.00");
+      String valorTotalFormatado = df.format(valorTotal);
+      String totalReceitasFormatado = df.format(totalReceitas);
+      String totalDespesasFormatado = df.format(totalDespesas);
+
       model.addAttribute("caixas", caixas);
-      model.addAttribute("totalReceitas", totalReceitas);
-      model.addAttribute("totalDespesas", totalDespesas);
-      model.addAttribute("valorTotal", valorTotal);
+      model.addAttribute("totalReceitas", totalReceitasFormatado);
+      model.addAttribute("totalDespesas", totalDespesasFormatado);
+      model.addAttribute("valorTotal", valorTotalFormatado);
 
       return "home/index";
+    }
+
+    @GetMapping("/adicionar")
+    public String adicionar() {
+      return "home/adicionar";
     }
 
     @GetMapping("/excluir/{id}")
@@ -55,6 +68,22 @@ public class HomeController {
       } else {
         System.out.println("Registro com ID" + id + "não encontrado");
       }
-      return "redirect:/"; 
+      return "redirect:/";
+    }
+
+    @PostMapping("/cadastrar")
+    public String cadastrar(@RequestParam("tipo") String tipo,
+                            @RequestParam("valor") float valor,
+                            @RequestParam("status") int status,
+                            Model model) {
+        Caixa caixa = new Caixa();
+        caixa.setTipo(tipo);
+        caixa.setValor(valor);
+        Status statusEnum = Status.values()[status];
+        caixa.setStatus(statusEnum);
+
+        caixaDAO.save(caixa); // Salva no banco de dados
+
+        return "redirect:/"; // Redireciona para a página de listagem
     }
 }

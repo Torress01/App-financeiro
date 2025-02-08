@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fluxo de Caixa em Java</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Fluxo de Caixa em Java</h1>
+        <hr>
+
+        <!-- Formulário de Cadastro -->
+        <form action="/cadastrar" method="POST">
+            <div class="form-group">
+                <label for="tipo">Item:</label>
+                <input type="text" class="form-control" id="tipo" name="tipo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="valor">Valor:</label>
+                <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Tipo:</label>
+                <select class="form-control" id="status" name="status" required>
+                    <option value="0">Despesa</option>
+                    <option value="1">Receita</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

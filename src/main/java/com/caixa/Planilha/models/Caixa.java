@@ -1,5 +1,7 @@
 package com.caixa.planilha.models;
 
+import java.text.DecimalFormat;
+
 import com.caixa.planilha.Enum.Status;
 import jakarta.persistence.*;
 
@@ -7,9 +9,12 @@ import jakarta.persistence.*;
 @Table(name = "caixas")
 public class Caixa {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(length = 200)
     private String tipo;
+
     private float valor;
     private Status status;
 
@@ -33,6 +38,11 @@ public class Caixa {
 
     public float getValor() {
         return valor;
+    }
+
+    public String getValorFormatado() {
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        return df.format(valor);
     }
 
     public void setValor(float valor) {
